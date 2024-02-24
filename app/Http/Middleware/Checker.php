@@ -14,7 +14,6 @@ namespace VanguardLTE\Http\Middleware
                 return $next($request);
             }
             $user = \VanguardLTE\User::find(auth()->user()->id);
-            print_r($user);exit;
             $user->update(['last_online' => date('Y-m-d H:i:s')]);
             if( !auth()->user()->hasRole('user') ) 
             {
@@ -28,6 +27,7 @@ namespace VanguardLTE\Http\Middleware
             {
                 return $next($request);
             }
+            // print_r($user);exit;
             $shop = \VanguardLTE\Shop::find($user->shop_id);
             if( auth()->user()->hasRole('user') && !count($shop->countries) && !count($shop->oss) && !count($shop->devices) ) 
             {
