@@ -238,10 +238,15 @@ Route::namespace('Frontend')->middleware(['siteisclosed', 'checker'])->group(fun
      * Games routes
      */
 
-    Route::get('/', [
-        'as' => 'frontend.game.list',
-        'uses' => 'GamesController@index'
-    ]);
+    // Route::get('/', [
+    //     'as' => 'frontend.game.list',
+    //     'uses' => 'GamesController@index'
+    // ]);
+
+    Route::get('/', function(){
+        echo "sssdfsdf";
+    });
+
     Route::get('/faq', [
         'as' => 'frontend.faq',
         'uses' => 'GamesController@faq',
