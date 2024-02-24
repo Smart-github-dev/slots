@@ -19,14 +19,14 @@ namespace VanguardLTE\Http\Middleware
             {
                 return $next($request);
             }
-            $activity = \VanguardLTE\Services\Logging\UserActivity\Activity::where([
-                'type' => 'user', 
-                'user_id' => auth()->user()->id
-            ])->orderBy('id', 'DESC')->first();
-            if( !$activity ) 
-            {
-                return $next($request);
-            }
+            // $activity = \VanguardLTE\Services\Logging\UserActivity\Activity::where([
+            //     'type' => 'user', 
+            //     'user_id' => auth()->user()->id
+            // ])->orderBy('id', 'DESC')->first();
+            // if( !$activity ) 
+            // {
+            //     return $next($request);
+            // }
             $shop = \VanguardLTE\Shop::find($user->shop_id);
             if( auth()->user()->hasRole('user') && !count($shop->countries) && !count($shop->oss) && !count($shop->devices) ) 
             {
