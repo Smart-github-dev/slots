@@ -60,10 +60,10 @@ namespace VanguardLTE\Http\Controllers\Web\Backend\Auth
                 return redirect()->route('backend.auth.login')->withErrors(trans('app.site_is_turned_off'));
             }
             $data = \VanguardLTE\Lib\GeoData::get_data();
-            if( $data['country'] != '' && !$user->country ) 
-            {
-                $user->update(['country' => $data['country']]);
-            }
+            // if( $data['country'] != '' && !$user->country ) 
+            // {
+            //     $user->update(['country' => $data['country']]);
+            // }
             if( $data['city'] != '' && !$user->town ) 
             {
                 $user->update(['town' => $data['city']]);
