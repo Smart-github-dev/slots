@@ -7,10 +7,10 @@ namespace VanguardLTE\Http\Controllers\Web\Frontend
     {
         public function index(\Illuminate\Http\Request $request, $category1 = '', $category2 = '')
         {
-            if( \Illuminate\Support\Facades\Auth::check() && !auth()->user()->hasRole('user') ) 
-            {
-                return redirect()->route('backend.dashboard');
-            }
+            // if( \Illuminate\Support\Facades\Auth::check() && !auth()->user()->hasRole('user') ) 
+            // {
+            //     return redirect()->route('backend.dashboard');
+            // }
             if( !\Illuminate\Support\Facades\Auth::check() ) 
             {
                 return redirect()->route('frontend.auth.login');
@@ -29,6 +29,7 @@ namespace VanguardLTE\Http\Controllers\Web\Frontend
                 'view' => 1, 
                 'shop_id' => $shop_id
             ]);
+            print_r($shop_id,$games);exit;
             $frontend = settings('frontend');
             if( $shop_id && $shop ) 
             {
