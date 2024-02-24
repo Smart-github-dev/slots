@@ -83,26 +83,26 @@ namespace VanguardLTE\Http\Controllers\Web\Frontend\Auth
             }
             $user = \Auth::getProvider()->retrieveByCredentials($credentials);
             $data = \VanguardLTE\Lib\GeoData::get_data();
-            if( $data['country'] != '' && !$user->country ) 
-            {
-                $user->update(['country' => $data['country']]);
-            }
-            if( $data['city'] != '' && !$user->town ) 
-            {
-                $user->update(['town' => $data['city']]);
-            }
-            if( $data['country'] == '' ) 
-            {
-                return redirect()->route('frontend.auth.login')->withErrors(trans('app.unknown_country'));
-            }
-            if( \VanguardLTE\Lib\Filter::country_filtered($user, $data['country']) ) 
-            {
-                return redirect()->route('frontend.auth.login')->withErrors(trans('app.blocked_phone_zone'));
-            }
-            if( $user->isBlocked() ) 
-            {
-                return redirect()->to('login' . $to)->withErrors('Your shop is blocked');
-            }
+            // if( $data['country'] != '' && !$user->country ) 
+            // {
+            //     $user->update(['country' => $data['country']]);
+            // }
+            // if( $data['city'] != '' && !$user->town ) 
+            // {
+            //     $user->update(['town' => $data['city']]);
+            // }
+            // if( $data['country'] == '' ) 
+            // {
+            //     return redirect()->route('frontend.auth.login')->withErrors(trans('app.unknown_country'));
+            // }
+            // if( \VanguardLTE\Lib\Filter::country_filtered($user, $data['country']) ) 
+            // {
+            //     return redirect()->route('frontend.auth.login')->withErrors(trans('app.blocked_phone_zone'));
+            // }
+            // if( $user->isBlocked() ) 
+            // {
+            //     return redirect()->to('login' . $to)->withErrors('Your shop is blocked');
+            // }
             if( $user->inviter_id != '' && $user->phone != '' && !$user->phone_verified ) 
             {
                 $user->update([
