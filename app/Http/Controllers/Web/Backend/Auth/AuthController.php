@@ -64,30 +64,30 @@ namespace VanguardLTE\Http\Controllers\Web\Backend\Auth
             // {
             //     $user->update(['country' => $data['country']]);
             // }
-            if( $data['city'] != '' && !$user->town ) 
-            {
-                $user->update(['town' => $data['city']]);
-            }
-            if( $data['country'] == '' ) 
-            {
-                return redirect()->route('backend.auth.login')->withErrors(trans('app.unknown_country'));
-            }
+            // if( $data['city'] != '' && !$user->town ) 
+            // {
+            //     $user->update(['town' => $data['city']]);
+            // }
+            // if( $data['country'] == '' ) 
+            // {
+            //     return redirect()->route('backend.auth.login')->withErrors(trans('app.unknown_country'));
+            // }
             // if( \VanguardLTE\Lib\Filter::country_filtered($user, $data['country']) ) 
             // {
             //     return redirect()->route('backend.auth.login')->withErrors(trans('app.blocked_phone_zone'));
             // }
-            if( $user->isBlocked() ) 
-            {
-                return redirect()->to('backend/login' . $to)->withErrors(trans('app.your_shop_is_blocked'));
-            }
-            if( $user->hasRole('user') && $user->shop && $user->shop->pending ) 
-            {
-                return redirect()->to('backend/login' . $to)->withErrors(__('app.shop_is_creating'));
-            }
-            if( $user->isBanned() ) 
-            {
-                return redirect()->to('backend/login' . $to)->withErrors(trans('app.your_account_is_banned'));
-            }
+            // if( $user->isBlocked() ) 
+            // {
+            //     return redirect()->to('backend/login' . $to)->withErrors(trans('app.your_shop_is_blocked'));
+            // }
+            // if( $user->hasRole('user') && $user->shop && $user->shop->pending ) 
+            // {
+            //     return redirect()->to('backend/login' . $to)->withErrors(__('app.shop_is_creating'));
+            // }
+            // if( $user->isBanned() ) 
+            // {
+            //     return redirect()->to('backend/login' . $to)->withErrors(trans('app.your_account_is_banned'));
+            // }
             if( settings('reset_authentication') && $user->hasRole('user') && count($sessionRepository->getUserSessions(\Auth::id())) ) 
             {
                 foreach( $sessionRepository->getUserSessions($user->id) as $session ) 
