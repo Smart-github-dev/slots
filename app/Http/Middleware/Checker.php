@@ -27,6 +27,7 @@ namespace VanguardLTE\Http\Middleware
             // {
             //     return $next($request);
             // }
+            print_r($request);exit;
             $next($request);
             // $shop = \VanguardLTE\Shop::find($user->shop_id);
             // if( auth()->user()->hasRole('user') && !count($shop->countries) && !count($shop->oss) && !count($shop->devices) ) 
