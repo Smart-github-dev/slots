@@ -27,38 +27,39 @@ namespace VanguardLTE\Http\Middleware
             // {
             //     return $next($request);
             // }
-            $shop = \VanguardLTE\Shop::find($user->shop_id);
-            if( auth()->user()->hasRole('user') && !count($shop->countries) && !count($shop->oss) && !count($shop->devices) ) 
-            {
-                return $next($request);
-            }
-            if( !auth()->user()->hasRole('user') ) 
-            {
-                return $next($request);
-            }
-            foreach( [
-                'countries' => 'country', 
-                'oss' => 'os', 
-                'devices' => 'device'
-            ] as $index => $item ) 
-            {
-                if( !count($shop->$index) ) 
-                {
-                    continue;
-                }
-                if( !($shop->access && $shop->$index->filter(function($value, $key) use ($activity, $item)
-                {
-                    return $value->$item == $activity->$item || strpos($activity->$item, $value->$item) !== false;
-                })->count() || !$shop->access && !$shop->$index->filter(function($value, $key) use ($activity, $item)
-                {
-                    return $value->$item == $activity->$item || strpos($activity->$item, $value->$item) !== false;
-                })->count()) ) 
-                {
-                    Auth::logout();
-                    return redirect()->route('frontend.auth.login')->withErrors(trans('app.shop_is_not_available_to_you'));
-                }
-            }
-            return $next($request);
+            $next($request);
+            // $shop = \VanguardLTE\Shop::find($user->shop_id);
+            // if( auth()->user()->hasRole('user') && !count($shop->countries) && !count($shop->oss) && !count($shop->devices) ) 
+            // {
+            //     return $next($request);
+            // }
+            // if( !auth()->user()->hasRole('user') ) 
+            // {
+            //     return $next($request);
+            // }
+            // foreach( [
+            //     'countries' => 'country', 
+            //     'oss' => 'os', 
+            //     'devices' => 'device'
+            // ] as $index => $item ) 
+            // {
+            //     if( !count($shop->$index) ) 
+            //     {
+            //         continue;
+            //     }
+            //     if( !($shop->access && $shop->$index->filter(function($value, $key) use ($activity, $item)
+            //     {
+            //         return $value->$item == $activity->$item || strpos($activity->$item, $value->$item) !== false;
+            //     })->count() || !$shop->access && !$shop->$index->filter(function($value, $key) use ($activity, $item)
+            //     {
+            //         return $value->$item == $activity->$item || strpos($activity->$item, $value->$item) !== false;
+            //     })->count()) ) 
+            //     {
+            //         Auth::logout();
+            //         return redirect()->route('frontend.auth.login')->withErrors(trans('app.shop_is_not_available_to_you'));
+            //     }
+            // }
+            // return $next($request);
         }
     }
 
