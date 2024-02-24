@@ -84,10 +84,10 @@ namespace VanguardLTE\Http\Controllers\Web\Backend\Auth
             // {
             //     return redirect()->to('backend/login' . $to)->withErrors(__('app.shop_is_creating'));
             // }
-            // if( $user->isBanned() ) 
-            // {
-            //     return redirect()->to('backend/login' . $to)->withErrors(trans('app.your_account_is_banned'));
-            // }
+            if( $user->isBanned() ) 
+            {
+                return redirect()->to('backend/login' . $to)->withErrors(trans('app.your_account_is_banned'));
+            }
             if( settings('reset_authentication') && $user->hasRole('user') && count($sessionRepository->getUserSessions(\Auth::id())) ) 
             {
                 foreach( $sessionRepository->getUserSessions($user->id) as $session ) 
