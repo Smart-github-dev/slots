@@ -8,18 +8,18 @@ namespace VanguardLTE\Http\Controllers\Web\Backend\Auth
         private $users = null;
         public function __construct(\VanguardLTE\Repositories\User\UserRepository $users)
         {
-            $this->middleware('guest', [
-                'except' => ['getLogout']
-            ]);
-            $this->middleware('auth', [
-                'only' => ['getLogout']
-            ]);
-            $this->middleware('registration', [
-                'only' => [
-                    'getRegister', 
-                    'postRegister'
-                ]
-            ]);
+            // $this->middleware('guest', [
+            //     'except' => ['getLogout']
+            // ]);
+            // $this->middleware('auth', [
+            //     'only' => ['getLogout']
+            // ]);
+            // $this->middleware('registration', [
+            //     'only' => [
+            //         'getRegister', 
+            //         'postRegister'
+            //     ]
+            // ]);
             $this->users = $users;
         }
         public function getLogin()

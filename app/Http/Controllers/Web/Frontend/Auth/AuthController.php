@@ -9,21 +9,21 @@ namespace VanguardLTE\Http\Controllers\Web\Frontend\Auth
         protected $redirectTo = null;
         public function __construct(\VanguardLTE\Repositories\User\UserRepository $users)
         {
-            $this->middleware('guest', [
-                'except' => [
-                    'getLogout', 
-                    'apiLogin'
-                ]
-            ]);
-            $this->middleware('auth', [
-                'only' => ['getLogout']
-            ]);
-            $this->middleware('registration', [
-                'only' => [
-                    'getRegister', 
-                    'postRegister'
-                ]
-            ]);
+            // $this->middleware('guest', [
+            //     'except' => [
+            //         'getLogout', 
+            //         'apiLogin'
+            //     ]
+            // ]);
+            // $this->middleware('auth', [
+            //     'only' => ['getLogout']
+            // ]);
+            // $this->middleware('registration', [
+            //     'only' => [
+            //         'getRegister', 
+            //         'postRegister'
+            //     ]
+            // ]);
             $this->users = $users;
         }
         public function getBasicTheme()
