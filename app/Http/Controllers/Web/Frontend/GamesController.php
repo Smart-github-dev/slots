@@ -38,7 +38,6 @@ namespace VanguardLTE\Http\Controllers\Web\Frontend
             {
                 return $redirect;
             }
-            print_r($shop_id);exit;
 
             \Illuminate\Support\Facades\Cookie::queue('currentCategory' . auth()->user()->id, $category1, 2678400);
 
@@ -231,6 +230,7 @@ namespace VanguardLTE\Http\Controllers\Web\Frontend
             {
                 $currentSliderNum = 'hot';
             }
+            
             $tournament = \VanguardLTE\Tournament::where('shop_id', $shop_id)->where('start', '<=', \Carbon\Carbon::now())->where('end', '>=', \Carbon\Carbon::now())->orderBy('end', 'ASC')->first();
             if( !$tournament ) 
             {
