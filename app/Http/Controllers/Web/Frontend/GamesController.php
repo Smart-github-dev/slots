@@ -29,8 +29,6 @@ namespace VanguardLTE\Http\Controllers\Web\Frontend
                 'view' => 1, 
                 'shop_id' => $shop_id
             ]);
-            // print_r($shop_id);
-            print_r($shop_id);exit;
             $frontend = settings('frontend');
             if( $shop_id && $shop ) 
             {
@@ -40,7 +38,10 @@ namespace VanguardLTE\Http\Controllers\Web\Frontend
             {
                 return $redirect;
             }
+            print_r($shop_id);exit;
+
             \Illuminate\Support\Facades\Cookie::queue('currentCategory' . auth()->user()->id, $category1, 2678400);
+
             if( $category1 != '' ) 
             {
                 $cat1 = \VanguardLTE\Category::where(['href' => $category1])->first();
