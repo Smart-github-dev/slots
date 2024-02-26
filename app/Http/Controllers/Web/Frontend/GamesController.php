@@ -30,7 +30,7 @@ namespace VanguardLTE\Http\Controllers\Web\Frontend
                 'shop_id' => $shop_id
             ]);
             // print_r($shop_id);
-            print_r('$shop');exit;
+            print_r($shop_id);exit;
             $frontend = settings('frontend');
             if( $shop_id && $shop ) 
             {
