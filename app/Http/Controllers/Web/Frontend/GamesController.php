@@ -1060,6 +1060,8 @@ namespace VanguardLTE\Http\Controllers\Web\Frontend
             $shop = \VanguardLTE\Shop::find(auth()->user()->shop_id);
             $shop_id = (\Illuminate\Support\Facades\Auth::check() ? auth()->user()->shop_id : 0);
             $shop = \VanguardLTE\Shop::find($shop_id);
+            print_r($shop);
+            return;
             $currentSliderNum = -1;
             $category1 = '';
             $frontend = settings('frontend');
