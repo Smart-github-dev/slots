@@ -236,7 +236,10 @@ namespace VanguardLTE\Http\Controllers\Web\Frontend
             {
                 $tournament = \VanguardLTE\Tournament::where('shop_id', $shop_id)->where('start', '>=', \Carbon\Carbon::now())->where('end', '>=', \Carbon\Carbon::now())->orderBy('end', 'ASC')->first();
             }
-            return view('frontend.' . $frontend . '.games.list', compact('games', 'category1', 'cat1', 'categories', 'currentSliderNum', 'title', 'body', 'keywords', 'description', 'jpgs', 'shop', 'devices', 'tournament', 'is_game_page', 'jpgSum'));
+            print_r($tournament);
+            return;
+
+            // return view('frontend.' . $frontend . '.games.list', compact('games', 'category1', 'cat1', 'categories', 'currentSliderNum', 'title', 'body', 'keywords', 'description', 'jpgs', 'shop', 'devices', 'tournament', 'is_game_page', 'jpgSum'));
         }
         public function balanceAdd(\Illuminate\Http\Request $request)
         {
@@ -1060,8 +1063,7 @@ namespace VanguardLTE\Http\Controllers\Web\Frontend
             $shop = \VanguardLTE\Shop::find(auth()->user()->shop_id);
             $shop_id = (\Illuminate\Support\Facades\Auth::check() ? auth()->user()->shop_id : 0);
             $shop = \VanguardLTE\Shop::find($shop_id);
-            print_r($shop);
-            return;
+         
             $currentSliderNum = -1;
             $category1 = '';
             $frontend = settings('frontend');
